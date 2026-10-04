@@ -9,7 +9,7 @@ Site de présentation privé, inspiré de la maquette dans `Maquettes/`. Un admi
 3. Dans Supabase **Authentication → URL Configuration**, ajouter `SITE_URL` aux URL de redirection autorisées. Pour les essais locaux, utiliser `http://127.0.0.1:5080/`.
 4. Exécuter `./scripts/setup-supabase.ps1`. Le script applique [`supabase/schema.sql`](supabase/schema.sql), envoie une invitation à l'adresse admin et lui attribue le rôle dans la base. Le destinataire ouvre le lien d'invitation sur le site pour définir son mot de passe. Le script retire ensuite le jeton personnel de `.env.local`.
 
-Les clients sont représentés par leurs projets et codes d'accès ; ils n'ont pas besoin d'un compte Auth. Si l'accès à l'API de gestion est indisponible, le schéma SQL peut aussi être exécuté dans **SQL Editor**, puis le compte peut être invité dans **Authentication → Users** et ajouté à `public.admins` avec son UUID.
+Les clients sont représentés par leurs projets et codes d'accès ; ils n'ont pas besoin d'un compte Auth. **Alternative sans jeton personnel :** inviter d'abord `maison.rizlene@gmail.com` dans **Authentication → Users**, puis exécuter [`supabase/schema.sql`](supabase/schema.sql) une seule fois dans **SQL Editor**. Le script SQL attribue le rôle à cette adresse. Copier ensuite les clés **publishable** et **secret** depuis **Settings → API Keys** dans `.env.local` ; ne pas les partager dans le chat.
 
 ## Lancement local
 

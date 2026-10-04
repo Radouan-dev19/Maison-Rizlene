@@ -54,4 +54,6 @@ grant execute on function public.redeem_project(text, text) to service_role;
 grant execute on function public.consume_video(uuid, text) to service_role;
 
 -- Après avoir créé l'utilisateur admin dans Authentication > Users :
--- insert into public.admins (id) values ('UUID_DU_COMPTE_ADMIN');
+insert into public.admins (id)
+select id from auth.users where lower(email) = 'maison.rizlene@gmail.com'
+on conflict (id) do nothing;
