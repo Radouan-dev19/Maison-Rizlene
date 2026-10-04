@@ -36,3 +36,6 @@ Le plan gratuit Render s'endort après une période d'inactivité. Supabase Free
 - **Aucun site web ne peut garantir le blocage des captures, de l'enregistrement d'écran, d'une caméra externe ou de la copie des octets vidéo par une personne techniquement compétente.** La lecture unique et le stockage privé limitent l'accès ordinaire, mais ne protègent pas l'idée montrée contre toute reproduction. Pour réduire davantage le risque, montrer un extrait volontairement incomplet ou filigrané, et réserver les détails de réalisation au contrat.
 
 Le visuel `hero-interior.png` a été généré avec l'outil ImageGen à partir de la maquette comme référence : salon chaleureux, drapé brun, canapé crème, aucune interface ou typographie intégrée.
+
+
+-> test
