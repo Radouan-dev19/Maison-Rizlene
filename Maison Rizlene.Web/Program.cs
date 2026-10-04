@@ -10,6 +10,23 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
+if (builder.Environment.IsDevelopment())
+{
+    var localSettings = Path.GetFullPath(Path.Combine(builder.Environment.ContentRootPath, "..", ".env.local"));
+    if (File.Exists(localSettings))
+    {
+        foreach (var line in File.ReadLines(localSettings))
+        {
+            var entry = line.Trim();
+            if (entry.Length == 0 || entry.StartsWith('#')) continue;
+            var separator = entry.IndexOf('=');
+            if (separator <= 0) continue;
+            var name = entry[..separator].Trim();
+            if (name is "SUPABASE_URL" or "SUPABASE_PUBLISHABLE_KEY" or "SUPABASE_SECRET_KEY")
+                builder.Configuration[name] = entry[(separator + 1)..].Trim();
+        }
+    }
+}
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 if (OperatingSystem.IsWindows() && builder.Environment.IsDevelopment())

@@ -3,7 +3,7 @@ const $ = id => document.getElementById(id);
 let csrfToken = '';
 let inviteToken = '';
 const inviteParams = new URLSearchParams(location.hash.slice(1));
-if (inviteParams.get('type') === 'invite' && inviteParams.get('access_token')) {
+if (['invite', 'recovery'].includes(inviteParams.get('type')) && inviteParams.get('access_token')) {
   inviteToken = inviteParams.get('access_token');
   history.replaceState(null, '', '/#set-password');
 }
@@ -79,7 +79,7 @@ $('set-password-form').addEventListener('submit', async event => {
 });
 
 async function dashboard() {
-  await request('/api/admin/me'); show('admin-dashboard'); await loadProjects();
+  await request('/api/admin/me'); show('admin-dashboard-view'); await loadProjects();
 }
 
 async function loadProjects() {
