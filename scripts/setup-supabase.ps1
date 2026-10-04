@@ -49,7 +49,7 @@ if ($rows.Count -eq 0 -or [string]::IsNullOrWhiteSpace($rows[0].id)) {
     $inviteBody = @{ email = $email } | ConvertTo-Json -Compress
     $inviteHeaders = @{ apikey = $settings['SUPABASE_SECRET_KEY'] }
     $redirect = [uri]::EscapeDataString($siteUrl)
-    Invoke-RestMethod -Uri "$url/auth/v1/invite?redirect_to=$redirect" -Method Post -Headers $inviteHeaders -ContentType 'application/json' -Body $inviteBody | Out-Null
+    Invoke-RestMethod -Uri "$url/auth/v1/invite?redirect_to=$redirect" -Method Post -Headers $inviteHeaders -UserAgent 'MaisonRizleneServer/1.0' -ContentType 'application/json' -Body $inviteBody | Out-Null
 }
 
 $adminRows = @(Invoke-Sql "insert into public.admins (id) select id from auth.users where email = '$email' on conflict (id) do update set id = excluded.id returning id::text as id")

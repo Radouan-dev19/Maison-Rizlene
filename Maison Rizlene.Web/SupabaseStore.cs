@@ -14,6 +14,7 @@ public sealed class SupabaseStore(HttpClient client, IConfiguration config)
     private HttpRequestMessage Request(HttpMethod method, string path, bool service = true)
     {
         var request = new HttpRequestMessage(method, Url + path);
+        request.Headers.UserAgent.ParseAdd("MaisonRizleneServer/1.0");
         var key = service ? ServiceKey : AnonKey;
         request.Headers.Add("apikey", key);
         if (!key.StartsWith("sb_", StringComparison.Ordinal))
