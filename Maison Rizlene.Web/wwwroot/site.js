@@ -64,6 +64,7 @@ $('login-form').addEventListener('submit', async event => {
   event.preventDefault(); const form = event.currentTarget; busy(form, true); errorAt('login-error', '');
   try {
     await request('/api/admin/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: $('admin-email').value, password: $('admin-password').value }) });
+    csrfToken = '';
     $('admin-password').value = ''; await dashboard();
   } catch { errorAt('login-error', 'Identifiants invalides ou accès non autorisé.'); }
   finally { busy(form, false); }
@@ -114,8 +115,13 @@ $('copy-code').addEventListener('click', async () => {
   $('copy-code').textContent = 'Copié !'; setTimeout(() => $('copy-code').textContent = 'Copier le code', 2000);
 });
 $('logout-button').addEventListener('click', async () => {
-  await request('/api/admin/logout', { method: 'POST' });
-  $('created-code').hidden = true; show('admin-login-view');
+  errorAt('logout-error', '');
+  try {
+    await request('/api/admin/logout', { method: 'POST' });
+    csrfToken = '';
+    $('created-code').hidden = true;
+    show('admin-login-view');
+  } catch (error) { errorAt('logout-error', error.message); }
 });
 
 async function route() {
