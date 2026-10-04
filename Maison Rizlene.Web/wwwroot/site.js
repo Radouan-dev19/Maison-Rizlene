@@ -25,7 +25,8 @@ async function request(path, options = {}) {
     try { detail = (await response.json()).error; } catch { /* generic error */ }
     throw new Error(detail || (response.status === 429 ? 'Trop de tentatives. Réessayez plus tard.' : 'Une erreur est survenue. Réessayez.'));
   }
-  return response.status === 204 ? null : response.json();
+  const body = await response.text();
+  return body ? JSON.parse(body) : null;
 }
 
 function show(view) {
