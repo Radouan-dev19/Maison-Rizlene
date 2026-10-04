@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#26170f">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Maison Rizlène — Votre aperçu privé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/site.css">
+  <script src="/site.js" defer></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="wordmark" href="/" aria-label="Maison Rizlène, accueil">Maison Rizlène<span class="wordmark-dot">.</span></a>
+      <div class="topbar-right"><span class="topbar-line"></span><span>Un lieu, une histoire</span></div>
+    </header>
+
+    <main id="client-view" class="hero" aria-labelledby="hero-title">
+      <div class="hero-backdrop"></div>
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <div class="eyebrow"><span class="eyebrow-line"></span>UNE EXPÉRIENCE PRIVÉE</div>
+        <h1 id="hero-title">L’art de se sentir <em>chez soi.</em></h1>
+        <p class="hero-intro">Un aperçu imaginé spécialement pour vous. Entrez votre code personnel pour découvrir votre projet.</p>
+        <form id="access-form" class="access-card">
+          <div class="card-heading"><span class="lock-icon" aria-hidden="true">◇</span><span>ACCÈS EXCLUSIF</span></div>
+          <label for="access-code">Votre code d’accès</label>
+          <div class="input-row"><input id="access-code" name="code" type="text" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Saisissez votre code" required><button type="submit" aria-label="Découvrir mon aperçu">→</button></div>
+          <p class="form-note">Votre vidéo privée se lance une seule fois, dès validation du code. Préparez-vous à la regarder entièrement.</p>
+          <p class="form-error" id="access-error" role="alert" hidden></p>
+        </form>
+        <div class="hero-caption"><span class="caption-mark">M</span><span>DES ESPACES PENSÉS POUR VOUS</span></div>
+      </div>
+      <div class="vertical-label">MAISON RIZLÈNE · CRÉATION SUR MESURE</div>
+      <div class="hero-index">01 <span>/</span> 01</div>
+    </main>
+
+    <main id="video-view" class="video-view" hidden>
+      <div class="video-panel">
+        <span class="eyebrow">VOTRE APERÇU PRIVÉ</span>
+        <h1 id="video-title">Votre projet</h1>
+        <div class="video-frame"><video id="preview-video" playsinline autoplay muted preload="auto" disablepictureinpicture controlslist="nodownload noremoteplayback" aria-label="Vidéo de présentation du projet"></video></div>
+        <p id="video-message">La lecture commence automatiquement. Cet accès est unique.</p>
+      </div>
+    </main>
+
+    <main id="admin-login-view" class="admin-view" hidden>
+      <section class="admin-login-card">
+        <span class="eyebrow">ESPACE ADMINISTRATEUR</span><h1>Bienvenue.</h1>
+        <p>Connectez-vous pour préparer les aperçus de vos clients.</p>
+        <form id="login-form">
+          <label for="admin-email">Adresse e-mail</label><input id="admin-email" type="email" required autocomplete="username" placeholder="vous@maisonrizlene.fr">
+          <label for="admin-password">Mot de passe</label><input id="admin-password" type="password" required autocomplete="current-password" placeholder="Votre mot de passe">
+          <button class="primary-button" type="submit">Se connecter <span>→</span></button>
+          <p class="form-error" id="login-error" role="alert" hidden></p>
+        </form>
+      </section>
+    </main>
+
+    <main id="set-password-view" class="admin-view" hidden>
+      <section class="admin-login-card">
+        <span class="eyebrow">INVITATION ADMINISTRATEUR</span><h1>Votre accès.</h1>
+        <p>Définissez votre mot de passe personnel pour accéder à l’administration.</p>
+        <form id="set-password-form">
+          <label for="new-password">Nouveau mot de passe</label><input id="new-password" type="password" minlength="12" required autocomplete="new-password" placeholder="12 caractères minimum">
+          <button class="primary-button" type="submit">Activer mon accès <span>→</span></button>
+          <p class="form-error" id="set-password-error" role="alert" hidden></p>
+        </form>
+      </section>
+    </main>
+
+    <main id="admin-dashboard-view" class="admin-dashboard" hidden>
+      <div class="dashboard-top"><div><span class="eyebrow">ESPACE ADMINISTRATEUR</span><h1>Vos projets<span class="wordmark-dot">.</span></h1><p>Créez un accès privé pour chaque client et suivez les visionnages.</p></div><button id="logout-button" class="text-button">Se déconnecter ↗</button></div>
+      <div class="dashboard-grid">
+        <section class="dashboard-card create-card"><div class="section-number">01 / CRÉATION</div><h2>Nouvel aperçu</h2><p>Un code sécurisé sera généré à la création. Il ne sera affiché qu’une fois.</p>
+          <form id="project-form">
+            <label for="project-name">Nom du projet</label><input id="project-name" name="name" maxlength="120" minlength="2" required placeholder="Ex. Appartement Haussmann">
+            <label for="client-name">Nom du client</label><input id="client-name" name="clientName" maxlength="120" minlength="2" required placeholder="Ex. Camille Martin">
+            <label for="project-video">Vidéo de présentation</label><input id="project-video" name="video" type="file" accept="video/mp4,.mp4" required><small>MP4 · 25 Mo maximum · environ 10 secondes</small>
+            <button class="primary-button" type="submit">Créer le projet <span>→</span></button>
+            <p class="form-error" id="project-error" role="alert" hidden></p>
+          </form>
+          <div id="created-code" class="created-code" hidden><span>CODE À TRANSMETTRE AU CLIENT</span><strong id="new-code"></strong><button id="copy-code" type="button">Copier le code</button><p>Conservez ce code maintenant. Seule son empreinte est enregistrée.</p></div>
+        </section>
+        <section class="dashboard-card projects-card"><div class="section-number">02 / SUIVI</div><div class="list-header"><h2>Projets créés</h2><span id="project-count">0 projet</span></div><div id="project-list" class="project-list"><p class="empty-state">Chargement…</p></div></section>
+      </div>
+    </main>
+
+    <footer class="footer"><span>© Maison Rizlène</span><span>Une première impression, rien que pour vous.</span><a href="#admin" id="admin-link">Administration</a></footer>
+  </div>
+</body>
+</html>

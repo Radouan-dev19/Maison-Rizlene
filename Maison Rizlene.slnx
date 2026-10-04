@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Maison Rizlene.ApiService/Maison Rizlene.ApiService.csproj" />
+  <Project Path="Maison Rizlene.AppHost/Maison Rizlene.AppHost.csproj" />
+  <Project Path="Maison Rizlene.ServiceDefaults/Maison Rizlene.ServiceDefaults.csproj" />
+  <Project Path="Maison Rizlene.Tests/Maison Rizlene.Tests.csproj" />
+  <Project Path="Maison Rizlene.Web/Maison Rizlene.Web.csproj" />
+</Solution>
